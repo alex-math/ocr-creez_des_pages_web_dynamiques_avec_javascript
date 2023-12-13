@@ -37,15 +37,15 @@ boutonTrierPrixCroissant.addEventListener("click", function () {
     const piecesOrdonnees = Array.from(pieces);
     piecesOrdonnees.sort(function (a, b) {
         return a.prix - b.prix;
-     });
-     console.log(piecesOrdonnees);
+    });
+    console.log(piecesOrdonnees);
  });
 
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 boutonFiltrer.addEventListener("click", function () {
-   const piecesFiltrees = pieces.filter(function (piece) {
-       return piece.prix <= 35;
-   });
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= 35;
+    });
 });
 
 const boutonTrierPrixDecroissant = document.querySelector(".btn-trier-prix-decroissant");
@@ -53,14 +53,48 @@ boutonTrierPrixDecroissant.addEventListener("click", function () {
     const piecesOrdonnees = Array.from(pieces);
     piecesOrdonnees.sort(function (a, b) {
         return b.prix - a.prix;
-     });
-     console.log(piecesOrdonnees);
- });
+    });
+    console.log(piecesOrdonnees);
+});
 
- const boutonFiltrerDescription = document.querySelector(".btn-filtrer-description");
- boutonFiltrerDescription.addEventListener("click", function () {
+const boutonFiltrerDescription = document.querySelector(".btn-filtrer-description");
+boutonFiltrerDescription.addEventListener("click", function () {
     const piecesFiltrees = pieces.filter(function (piece) {
         return piece.description
     });
     console.log(piecesFiltrees);
- });
+});
+
+// Liste de noms des pièces dites abordables
+const noms = pieces.map(piece => piece.nom);
+for(let i = pieces.length -1 ; i >= 0; i--){
+    if(pieces[i].prix > 35){
+        noms.splice(i,1);
+    }
+}
+//Création de la liste
+const abordablesElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < noms.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = noms[i];
+    abordablesElements.appendChild(nomElement)
+}
+// Ajout de l'en-tête puis de la liste au bloc résultats filtres
+document.querySelector('.abordables')
+    .appendChild(abordablesElements)
+
+// Liste de noms des pièces disponibles
+const disponibilites = pieces.map(piece => piece.nom);
+for(let i = pieces.length -1 ; i >= 0; i--){
+    if(pieces[i].disponibilite === false){
+        disponibilites.splice(i,1);
+    }
+}
+const disponiblesElements = document.createElement('ul');
+for(let i=0; i < disponibilites.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = `${disponibilites[i]} - ${pieces[i].prix} €`;
+    disponiblesElements.appendChild(nomElement)
+}
+document.querySelector('.disponibles').appendChild(disponiblesElements)
