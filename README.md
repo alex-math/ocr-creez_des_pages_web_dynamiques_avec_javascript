@@ -1,11 +1,9 @@
-# 7697016-Front-End.1
+<h1 align="center">Cours OpenClassrooms <a href="https://openclassrooms.com/fr/courses/7697016-creez-des-pages-web-dynamiques-avec-javascript" target="_blank">Créez des pages web dynamiques avec JavaScript</a></h1>
 
-Code base du fil rouge pour le cours OpenClassrooms [Créez des pages web dynamiques avec JavaScript](https://openclassrooms.com/fr/courses/7697016-creez-des-pages-web-dynamiques-avec-javascript)
 
-## Installation
+## Objectifs du cours
 
-Après avoir cloné le repo vous avez plusieurs options pour lancer le projet. 
-
-Si vous utiliser VSCode ou un autre éditeur de code avec une extersion de serveur web comme live server, vous pouvez lancer direcement votre site avec l'extension que vous utilisez habituellement. 
-
-Dans le cas contraire vous pouvez installer les dépendances de ce projet avec `npm install` puis lancer le projet via la commande `npm start`. Vous verrez dans le termninal le lien vers le site (par defaut http://127.0.0.1:8080 )
+- Créer une interface web à partir de données existantes ;
+- Rendre votre page web interactive ;
+- Interagir avec un service web à l’aide d’une API HTTP ;
+- Enrichir vos pages web grâce aux librairies.
