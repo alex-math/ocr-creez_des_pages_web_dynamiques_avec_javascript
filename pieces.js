@@ -18,8 +18,8 @@ for (let i = 0; i < pieces.length; i++) {
     prixElement.innerText = `Prix: ${pieces[i].prix} € (${pieces[i].prix < 35 ? "€" : "€€€"})`;
     const categorieElement = document.createElement("p");
     categorieElement.innerText = pieces[i].categorie ?? "(aucune catégorie)";
-    const disponibilite = document.createElement("p");
-    disponibilite.innerText = pieces[i].disponibilite ? "En stock" : "Rupture de stock";
+    const stockElement = document.createElement("p");
+    stockElement.innerText = pieces[i].disponibilite ? "En stock" : "Rupture de stock";
     
     // On rattache la balise article à la section Fiches
     sectionFiches.appendChild(pieceElement);
@@ -29,5 +29,38 @@ for (let i = 0; i < pieces.length; i++) {
     pieceElement.appendChild(prixElement);
     pieceElement.appendChild(categorieElement);
     pieceElement.appendChild(description);
-    pieceElement.appendChild(disponibilite);
-    }
+    pieceElement.appendChild(stockElement);
+}
+
+const boutonTrierPrixCroissant = document.querySelector(".btn-trier-prix-croissant");
+boutonTrierPrixCroissant.addEventListener("click", function () {
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function (a, b) {
+        return a.prix - b.prix;
+     });
+     console.log(piecesOrdonnees);
+ });
+
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+boutonFiltrer.addEventListener("click", function () {
+   const piecesFiltrees = pieces.filter(function (piece) {
+       return piece.prix <= 35;
+   });
+});
+
+const boutonTrierPrixDecroissant = document.querySelector(".btn-trier-prix-decroissant");
+boutonTrierPrixDecroissant.addEventListener("click", function () {
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function (a, b) {
+        return b.prix - a.prix;
+     });
+     console.log(piecesOrdonnees);
+ });
+
+ const boutonFiltrerDescription = document.querySelector(".btn-filtrer-description");
+ boutonFiltrerDescription.addEventListener("click", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.description
+    });
+    console.log(piecesFiltrees);
+ });
